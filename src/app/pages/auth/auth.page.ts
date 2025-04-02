@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -6,6 +6,7 @@ import { AuthPageRoutingModule } from './auth-routing.module';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { LogoComponent } from 'src/app/shared/components/logo/logo.component';
 import { CustomInputComponent } from 'src/app/shared/components/custom-input/custom-input.component';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-auth',
@@ -31,7 +32,8 @@ export class AuthPage implements OnInit {
     password: new FormControl('', [Validators.required]),
   })
 
-  constructor() { }
+  firebaseSvc = inject(FirebaseService);
+
   ngOnInit(){
 
 
